@@ -27,9 +27,7 @@ const IndexPage: React.FC = () => {
       {'>'}
     </motion.button>
     )}
-    <React.Suspense fallback={  <SolarSystemLoading/>}>
     <ImageOfTheDay date={date} fallback={<div>Loading...<SolarSystemLoading/></div>} />
-    </React.Suspense>
   </Layout>
   );
 }
