@@ -3,7 +3,7 @@ require("dotenv").config({
 })
 
 module.exports = {
-  pathPrefix: "/NASAImageGallery",
+  pathPrefix: "/shopify-technical-challenge",
   siteMetadata: {
     title: `NASA Image Gallery`,
     description: `Into space we go 🚀 and I bet this site will get you there faster ;)`,
