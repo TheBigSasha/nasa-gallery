@@ -59,20 +59,25 @@ mark {
 }
 
 .leftStatic {
-  position: absolute;
+  position: fixed;
   top: 50%;
-  left: 0;
+  left: 25px;
+  z-index: 800;
 }
 
 .rightStatic {
-  position: absolute;
+  position: fixed;
   top: 50%;
-  right: 0;
+  right: 25px;
+  z-index: 800;
 }
 
 
 footer {
-  position: absolute;
+  position: sticky;
+  backdrop-filter: blur(3px);
+  padding: 15px;
+  width: 100%;
   bottom: 0;
 }
 
@@ -91,4 +96,8 @@ footer {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.error {
+  color: red;
 }
