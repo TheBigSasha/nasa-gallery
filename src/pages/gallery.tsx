@@ -12,7 +12,7 @@ const GalleryBrowser = loadable(() => import('../components/GalleryBrowser'));
 const IndexPage: React.FC = () => {
   const lastDate = new Date();
   const dateStart = new Date(lastDate);
-  dateStart.setDate(dateStart.getDate() - 30);
+  dateStart.setDate(dateStart.getDate() - 20);
   return(
   <Layout>
     <Seo title="Gallery" />
