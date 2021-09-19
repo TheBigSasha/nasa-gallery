@@ -16,7 +16,7 @@ const ImageOfTheDay: React.FC<ImageOfTheDayProps> = ({date}) => {
      month: "2-digit",
      day: "2-digit",
    }).replace(new RegExp('/', 'g'), '-');
-    if((imageResponse === undefined && error === '') || imageResponse.date !== procDate){
+    if((imageResponse === undefined && error === '') || (imageResponse === undefined ? '' : imageResponse.date) !== procDate){
       axios({
         method: 'get',
         url: `https://api.nasa.gov/planetary/apod?date=${procDate}&start_date=&end_date=&count=&thumbs&api_key=${process.env.NASA_API_KEY}`,
