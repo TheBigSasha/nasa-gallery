@@ -25,6 +25,9 @@ const IndexPage: React.FC = () => {
       {'>'}
     </motion.button>
     )}
+    <p>
+      {process.env.ENV_TEST}
+      </p>
     <ImageOfTheDay date={date.toLocaleDateString("fr-ca", {year: "numeric",
       month: "2-digit",
       day: "2-digit",

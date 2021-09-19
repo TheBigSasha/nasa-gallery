@@ -11,7 +11,7 @@ interface ImageOfTheDayProps{
 
 const ImageOfTheDay: React.FC<ImageOfTheDayProps> = ({date}) => {
      const [imageResponse, setImageResponse] = useState(undefined);
-     console.log(process.env.ENV_TEST);
+     console.log(`the test is  ${process.env.ENV_TEST}`);
       axios({
         method: 'get',
         url: `https://api.nasa.gov/planetary/apod?date=${date}&start_date=&end_date=&count=&thumbs&api_key=${process.env.NASA_API_KEY}`,
