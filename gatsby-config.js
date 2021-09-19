@@ -3,12 +3,12 @@ require("dotenv").config({
 })
 
 module.exports = {
-  pathPrefix: "/sashaphoto-gatsby-template",
+  pathPrefix: "/NASAImageGallery",
   siteMetadata: {
-    title: `Sashaphoto Gatsby Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `NASA Image Gallery`,
+    description: `Into space we go 🚀 and I bet this site will get you there faster ;)`,
+    author: `Alexander Aleshchenko`,
+    siteUrl: `https://sasharesume.com/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -32,7 +32,21 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/gatsby-icon.png`,
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `blurred`,
+          quality: 50,
+          breakpoints: [750, 1080, 1366, 1920],
+          backgroundColor: `transparent`,
+          tracedSVGOptions: {},
+          blurredOptions: {},
+          jpgOptions: {},
+          pngOptions: {},
+          webpOptions: {},
+          avifOptions: {},
+        },
+
       },
     },
     `gatsby-plugin-gatsby-cloud`,
