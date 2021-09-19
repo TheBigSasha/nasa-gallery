@@ -33,15 +33,9 @@ const ImageView: React.FC<React.PropsWithChildren<ImageOfTheDayProps>> = ({title
 
     return (<motion.div initial={{scale: 0}} animate={{scale: 1}} exit={{scale:0}}>
         <LazyLoadImage alt={title} src={imageURLHD} width={width}/>
-        <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => setExpanded(!expanded)}
-         >
-             {expanded ? "hide" : "expand"}
-         </motion.button>
 
-        <h1>{title}</h1>
+        <h1             onClick={() => setExpanded(!expanded)}
+>{title}</h1>
         <h3>{date}</h3>
         <motion.div animate={expanded ? "open" : "closed"} variants={variants}>
             <p>{explanation}</p>

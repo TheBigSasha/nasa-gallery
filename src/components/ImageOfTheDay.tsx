@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import ImageView from "./imageview";
 import { SolarSystemLoading } from 'react-loadingg';
+import { motion } from "framer-motion";
 
 
 interface ImageOfTheDayProps{
@@ -27,10 +28,15 @@ const ImageOfTheDay: React.FC<ImageOfTheDayProps> = ({date}) => {
       });
        
     if(imageResponse !== undefined){
-    return (<ImageView title={imageResponse.title} imageURL={imageResponse.url} imageURLHD={imageResponse.hdurl} explanation={imageResponse.explanation} date={imageResponse.date} expand={false} >
+    return (<ImageView title={imageResponse.title} imageURL={imageResponse.url} imageURLHD={imageResponse.hdurl} explanation={imageResponse.explanation} date={imageResponse.date} expand={true} >
     </ImageView>);
     }else{
-        return (<SolarSystemLoading/>)
+        return (
+        <motion.div initial={{scale: 0}} animate={{scale: 1}} exit={{scale:0}} className={'center'}>
+            <SolarSystemLoading/>
+            <h2>Loading</h2>
+            <h3>{date}</h3>
+        </motion.div>)
     }
 }
 

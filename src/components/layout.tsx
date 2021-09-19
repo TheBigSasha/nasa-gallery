@@ -36,6 +36,8 @@ const Layout: React.FC = ({ children }) => {
         <footer
           style={{
             marginTop: `2rem`,
+            marginBottom: '2rem',
+            bottom: 0,
           }}
         >
           © {new Date().getFullYear()}, 
