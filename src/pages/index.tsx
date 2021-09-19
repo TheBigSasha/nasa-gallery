@@ -17,6 +17,7 @@ const IndexPage: React.FC = () => {
   <Layout>
     <Seo title="Home" />
     <h1>The space age is upon us 🚀</h1>
+    <p>Date picker goes here></p>
     <ImageOfTheDay date={date.toLocaleDateString("en-US").replace('/', '-')}/>
   </Layout>
   );
