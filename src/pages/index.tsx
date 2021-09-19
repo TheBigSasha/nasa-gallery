@@ -12,7 +12,7 @@ import { useState } from "react"
 
 const IndexPage: React.FC = () => {
   const [date, setDate] = useState(new Date());
-
+  console.log(process.env.ENV_TEST);
   return(
   <Layout>
     <Seo title="Home" />
