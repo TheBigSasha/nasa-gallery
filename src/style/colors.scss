@@ -1,0 +1,18 @@
+$accent: #00aeff;
+$complement: complement($accent);
+
+html {
+  --border-dark: rgba(invert(var(--base-color)), 0.88);
+  --background: #ececec;
+  --base-color: #ffffff;
+  --text-main: black;
+}
+
+@media(prefers-color-scheme: dark){
+  html {
+    --base-color: #000000;
+    --border-dark: rgba(invert(var(--base-color)), 0.88);
+    --background: #232323;
+    --text-main: white;
+  }
+}

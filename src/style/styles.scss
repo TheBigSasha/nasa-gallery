@@ -1,0 +1,54 @@
+@import 'cssreset';
+@import 'fonts';
+@import 'colors-autotheme';
+@import 'animations';
+
+$border-radius: 2px;
+
+.ShowPalette {
+  @include draw-palette($accent);
+}
+
+.ShowComplementPalette {
+  @include draw-palette($complement);
+}
+
+.Magic {
+  @include SweepBackground(linear-gradient(90deg, base($accent-palette), base($complement-palette)));
+}
+
+html {
+  color: var(--text-main);
+  background-color: var(--base-color);
+}
+
+a, Link {
+  color: base($accent-palette);
+}
+
+code {
+  background: var(--background);
+}
+
+hr {
+  border-top: 1px solid var(--foreground);
+}
+
+mark {
+  background-color: base($accent-palette);
+  color: base($complement-palette);
+}
+
+.BaseColor {
+  color: var(--text-main);
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background: none;
+}
+
+.Header{
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
