@@ -13,7 +13,6 @@ import { motion } from "framer-motion"
 
 const IndexPage: React.FC = () => {
   const [date, setDate] = useState(new Date());
-  console.log(process.env.ENV_TEST);
   return(
   <Layout>
     <Seo title="Home" />
