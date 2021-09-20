@@ -15,17 +15,13 @@ const GalleryBrowser = loadable(() => import('../components/GalleryBrowser'));
 const IndexPage: React.FC = () => {
   const lastDate = new Date();
   const dateStart = new Date(lastDate);
-  const [apiKey, setApiKey] = useState<string | undefined>(process.env.NASA_API_KEY || useStore(APIStore).APIKey); //Switch to context
-  APIStore.setState({
-    APIKey: apiKey === "undefined" ? undefined : apiKey
-  })
+  const [apiKey, setApiKey] = useState<string | undefined>(process.env.NASA_API_KEY || useStore(APIStore).APIKey || ''); //Switch to context
   const [showPopup, setShowPopup] = useState<boolean>(false);
-
   dateStart.setDate(dateStart.getDate() - 20);
   return(
   <Layout>
     <Seo title="Gallery" />
-    {(apiKey === undefined || showPopup) && <APIKeySetter setApiKey={(key) => {setApiKey(key)}} apiKey={apiKey || ''} exit={() => {
+    {(apiKey === undefined || showPopup) && <APIKeySetter setApiKey={(key) => {setApiKey(key); APIStore.setState({APIKey: key})}} apiKey={apiKey || ''} exit={() => {
       setShowPopup(false)
     }}/>}
 
