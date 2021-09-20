@@ -36,10 +36,10 @@ const ImageOfTheDay: React.FC<ImageOfTheDayProps> = ({ date }) => {
     return (
       <TrackVisibility>
         <ImageView title={imageResponse.title} imageURL={imageResponse.url} imageURLHD={imageResponse.hdurl}
-                       explanation={imageResponse.explanation} date={imageResponse.date} expand={true}
-                       contentType={imageResponse.media_type}>
-    </ImageView>
-        </TrackVisibility>)
+                   explanation={imageResponse.explanation} date={imageResponse.date} expand={true}
+                   contentType={imageResponse.media_type}>
+        </ImageView>
+      </TrackVisibility>)
   } else {
     return (
       <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} className={"center"}>
