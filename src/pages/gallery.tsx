@@ -1,11 +1,10 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { useState } from "react"
 
 
 import Layout from "../components/layout"
 import Seo from "../utility/seo"
-import loadable from '@loadable/component'
-import { useState } from "react"
+import loadable from "@loadable/component"
 import { useStore } from "react-stores"
 import { APIStore } from "../utility/APIStore"
 import APIKeySetter from "../components/APIKeySetter"
@@ -18,7 +17,7 @@ const IndexPage: React.FC = () => {
   const dateStart = new Date(lastDate);
   const [apiKey, setApiKey] = useState<string | undefined>(process.env.NASA_API_KEY || useStore(APIStore).APIKey); //Switch to context
   APIStore.setState({
-    APIKey: apiKey
+    APIKey: apiKey === "undefined" ? undefined : apiKey
   })
   const [showPopup, setShowPopup] = useState<boolean>(false);
 
