@@ -1,13 +1,16 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import { motion } from "framer-motion"
 
 export interface HeaderProps{
   siteTitle: string;
 }
 
 const Header: React.FC<HeaderProps> = ({ siteTitle }) => (
-  <header
+  <motion.header
     className={'background-complement-lightest Header'}
+    initial={{y: -100}}
+    animate={{y:0}}
     style={{
       marginBottom: `1.45rem`,
     }}
@@ -31,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({ siteTitle }) => (
         </Link>
       </h1>
     </div>
-  </header>
+  </motion.header>
 )
 
 Header.defaultProps = {

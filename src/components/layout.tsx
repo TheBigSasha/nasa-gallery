@@ -10,6 +10,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "../style/styles.scss"
+import { motion } from "framer-motion"
 
 const Layout: React.FC = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -18,6 +19,7 @@ const Layout: React.FC = ({ children }) => {
         siteMetadata {
           title
         }
+          pathPrefix
       }
     }
   `)
@@ -33,17 +35,24 @@ const Layout: React.FC = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-            marginBottom: '2rem',
-            bottom: 0,
-          }}
-        >
-          © {new Date().getFullYear()}, 
-          <a href="https://sasharesume.com">Alexander Aleshchenko</a>
-        </footer>
       </div>
+      <motion.footer
+        style={{
+          marginTop: `2rem`,
+          bottom: 0,
+        }}
+        initial={{y: 100}} animate={{y:0}}
+      >
+        <div className={'leftRight'} style={{padding: `0 1.0875rem 0`}} >
+        <motion.div whileHover={{y: -5}}>
+        © {new Date().getFullYear()},
+        <a href="https://sasharesume.com">Alexander Aleshchenko</a>
+        </motion.div>
+          <motion.div whileHover={{y: -5}}>
+            See source on <a href={`https://github.com/TheBigSasha/${data.site.pathPrefix || ''}`}>GitHub</a>
+          </motion.div>
+        </div>
+      </motion.footer>
     </>
   )
 }

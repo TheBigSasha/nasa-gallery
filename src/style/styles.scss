@@ -58,6 +58,11 @@ mark {
     z-index: 999;
 }
 
+.imageCap {
+  text-shadow: 0px 0px 5px var(--background);
+  mix-blend-mode: difference;
+}
+
 .leftStatic {
   position: fixed;
   top: 50%;
@@ -74,10 +79,11 @@ mark {
 
 
 footer {
-  position: sticky;
+  position: fixed;
   backdrop-filter: blur(3px);
   padding: 15px;
-  width: 100%;
+  background: rgba(lightest($complement-palette), 0.5);
+  width: 100vw;
   bottom: 0;
 }
 
@@ -97,7 +103,10 @@ footer {
   justify-content: center;
   flex-direction: column;
 }
-
+.leftRight{
+  display: flex;
+  justify-content: space-between;
+}
 .error {
   color: red;
 }
