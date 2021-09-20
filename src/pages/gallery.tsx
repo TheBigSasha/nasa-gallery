@@ -15,8 +15,8 @@ const GalleryBrowser = loadable(() => import('../components/GalleryBrowser'));
 const IndexPage: React.FC = () => {
   const lastDate = new Date();
   const dateStart = new Date(lastDate);
-  const [apiKey, setApiKey] = useState<string | undefined>(process.env.NASA_API_KEY || useStore(APIStore).APIKey || ''); //Switch to context
-  const [showPopup, setShowPopup] = useState<boolean>(false);
+  const [apiKey, setApiKey] = useState<string | undefined>(process.env.NASA_API_KEY || useStore(APIStore).APIKey || undefined); //Switch to context
+  const [showPopup, setShowPopup] = useState<boolean>(apiKey === undefined || apiKey==='');
   dateStart.setDate(dateStart.getDate() - 20);
   return(
   <Layout>
