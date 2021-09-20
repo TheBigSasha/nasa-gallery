@@ -6,7 +6,7 @@ export interface HeaderProps{
   siteTitle: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ siteTitle }) => (
+const Header: React.FC<HeaderProps> = ({ siteTitle, children }) => (
   <motion.header
     className={'background-complement-lightest Header'}
     initial={{y: -100}}
@@ -16,6 +16,7 @@ const Header: React.FC<HeaderProps> = ({ siteTitle }) => (
     }}
   >
     <div
+      className={'leftRight'}
       style={{
         margin: `0 auto`,
         maxWidth: 960,
@@ -33,6 +34,9 @@ const Header: React.FC<HeaderProps> = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
+      <div>
+        {children}
+      </div>
     </div>
   </motion.header>
 )

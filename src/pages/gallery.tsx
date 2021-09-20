@@ -16,10 +16,10 @@ const IndexPage: React.FC = () => {
   const lastDate = new Date();
   const dateStart = new Date(lastDate);
   const [apiKey, setApiKey] = useState<string | undefined>(process.env.NASA_API_KEY || useStore(APIStore).APIKey || undefined); //Switch to context
-  const [showPopup, setShowPopup] = useState<boolean>(apiKey === undefined || apiKey==='');
+  const [showPopup, setShowPopup] = useState<boolean>(apiKey === undefined || apiKey === '' || apiKey === 'undefined');
   dateStart.setDate(dateStart.getDate() - 20);
   return(
-  <Layout>
+  <Layout extraContent={apiKey !== undefined && (<button onClick={() => {setApiKey(undefined); APIStore.setState({APIKey: undefined});}}>Logout</button>)}>
     <Seo title="Gallery" />
     {(apiKey === undefined || showPopup) && <APIKeySetter setApiKey={(key) => {setApiKey(key); APIStore.setState({APIKey: key})}} apiKey={apiKey || ''} exit={() => {
       setShowPopup(false)

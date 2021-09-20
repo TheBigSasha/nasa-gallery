@@ -12,7 +12,11 @@ import Header from "./header"
 import "../style/styles.scss"
 import { motion } from "framer-motion"
 
-const Layout: React.FC = ({ children }) => {
+interface LayoutProps{
+  extraContent?: any
+}
+
+const Layout: React.FC<LayoutProps> = ({extraContent, children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -26,7 +30,7 @@ const Layout: React.FC = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <Header siteTitle={data.site.siteMetadata?.title || `Title`} >{extraContent}</Header>
       <div
         style={{
           margin: `0 auto`,
