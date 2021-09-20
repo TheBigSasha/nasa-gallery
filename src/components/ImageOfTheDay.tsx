@@ -4,12 +4,14 @@ import ImageView from "./imageview"
 import { SolarSystemLoading } from "react-loadingg"
 import { motion } from "framer-motion"
 import TrackVisibility from "react-on-screen"
+import LikeHandler from './LikeHandler';
 
 interface ImageOfTheDayProps {
   date: Date;
+  apiKey?: string;
 }
 
-const ImageOfTheDay: React.FC<ImageOfTheDayProps> = ({ date }) => {
+const ImageOfTheDay: React.FC<ImageOfTheDayProps> = ({ date,apiKey }) => {
   const [imageResponse, setImageResponse] = useState(undefined)
   const [error, setError] = useState("")
   const procDate = date.toLocaleDateString("fr-ca", {
@@ -20,7 +22,7 @@ const ImageOfTheDay: React.FC<ImageOfTheDayProps> = ({ date }) => {
   if ((imageResponse === undefined && error === "") || (imageResponse === undefined ? "" : imageResponse.date) !== procDate) {
     axios({
       method: "get",
-      url: `https://api.nasa.gov/planetary/apod?date=${procDate}&start_date=&end_date=&count=&thumbs&api_key=${process.env.NASA_API_KEY}`,
+      url: `https://api.nasa.gov/planetary/apod?date=${procDate}&start_date=&end_date=&count=&thumbs&api_key=${process.env.NASA_API_KEY || apiKey}`,
       headers: {}
     })
       .then(function(response) {
@@ -38,6 +40,7 @@ const ImageOfTheDay: React.FC<ImageOfTheDayProps> = ({ date }) => {
         <ImageView title={imageResponse.title} imageURL={imageResponse.url} imageURLHD={imageResponse.hdurl}
                    explanation={imageResponse.explanation} date={imageResponse.date} expand={true}
                    contentType={imageResponse.media_type}>
+          <LikeHandler apiKey={apiKey || ''} imageID={imageResponse.id}/>
         </ImageView>
       </TrackVisibility>)
   } else {

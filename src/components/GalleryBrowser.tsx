@@ -1,19 +1,16 @@
-import axios from "axios";
 import React, { useState } from "react";
-import ImageView from "./imageview";
 import { SolarSystemLoading } from 'react-loadingg';
-import { motion } from "framer-motion";
 import loadable from "@loadable/component";
-
 
 interface ImageOfTheDayProps{
     dateStart: Date;
     dateEnd: Date;
+    apiKey: string;
 }
 
 const ImageOfTheDay = loadable(() => import('./ImageOfTheDay'));
 
-const GalleryBrowser: React.FC<ImageOfTheDayProps> = ({dateStart, dateEnd}) => {
+const GalleryBrowser: React.FC<ImageOfTheDayProps> = ({dateStart, dateEnd,apiKey}) => {
     const dates: Date[] = [];
     let currentDate = dateEnd;
     while(currentDate >= dateStart){
@@ -23,7 +20,7 @@ const GalleryBrowser: React.FC<ImageOfTheDayProps> = ({dateStart, dateEnd}) => {
     }
     return (<div>
         {dates.map((date) => (
-            <ImageOfTheDay date={date} fallback={<SolarSystemLoading/>} ></ImageOfTheDay>
+            <ImageOfTheDay date={date} apiKey={apiKey} fallback={<SolarSystemLoading />} />
         ))}
     </div>)
 }

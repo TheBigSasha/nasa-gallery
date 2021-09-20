@@ -37,7 +37,8 @@ const ImageView: React.FC<React.PropsWithChildren<ImageOfTheDayProps>> = ({
                                                                             date,
                                                                             expand,
                                                                             contentType,
-                                                                            isVisible
+                                                                            isVisible,
+  children
                                                                           }) => {
   const { width, height, ref } = useResizeDetector()
   const [expanded, setExpanded] = useState(expand)
@@ -52,13 +53,19 @@ const ImageView: React.FC<React.PropsWithChildren<ImageOfTheDayProps>> = ({
           {contentType === "video" && (<iframe src={imageURL} width={width} height={(width || 1280) / 16 * 9} />)}
           {contentType !== "image" && contentType !== "video" && (
             <code className={"error"}>Invalid media type: {contentType}</code>)}
-          <motion.div initial={{ backdropFilter: "blur(0px)", scale: 0 }}
+          <motion.div
+                      className={'leftRight'}
+                      initial={{ backdropFilter: "blur(0px)", scale: 0 }}
                       animate={{ backdropFilter: "blur(10px)", scale: 1 }}
                       style={{ position: "sticky", bottom: "85px" }}>
+            <div>
             <motion.h1 animate={isVisible ? 'visible' : 'invisible'} onClick={() => setExpanded(!expanded)}
              className={'imageCap'}>{title}</motion.h1>
             <h3 className={"imageCap"}>{date}</h3>
-
+            </div>
+            <div>
+              {children}
+            </div>
           </motion.div>
 
             <motion.div initial={{opacity: 0.6}} animate={(isVisible || ((height !== undefined ? height : 400) > window.innerHeight - 100)) ? 'visible' : 'invisible'} variants={variants}>
