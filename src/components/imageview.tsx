@@ -49,8 +49,9 @@ const ImageView: React.FC<React.PropsWithChildren<ImageOfTheDayProps>> = ({
     <AnimatePresence>
         <motion.div ref={ref} animate={isVisible ? 'visible' : 'invisible'} style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
           {contentType === "image" && (<LazyLoadImage alt={title} src={imageURL} width={width} effect={"blur"} />)}
-          {contentType === "video" && (<video src={imageURL} width={width}><code className={'error'}>Your browser is having trouble playing this video content.</code> </video>)}
-          {contentType !== "image" && contentType !== "video"  && (<code className={"error"}>Invalid media type: {contentType}</code>)}
+          {contentType === "video" && (<iframe src={imageURL} width={width} height={(width || 1280) / 16 * 9} />)}
+          {contentType !== "image" && contentType !== "video" && (
+            <code className={"error"}>Invalid media type: {contentType}</code>)}
           <motion.div initial={{ backdropFilter: "blur(0px)", scale: 0 }}
                       animate={{ backdropFilter: "blur(10px)", scale: 1 }}
                       style={{ position: "sticky", bottom: "85px" }}>

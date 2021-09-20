@@ -89,8 +89,8 @@ footer {
 
 .navButton{
   border: none;
-  background: darkest($accent-palette);
-  color: base($complement-palette);
+  background: rgba(light($complement-palette), 0.5);
+  color: base($accent-palette);
   font-size: clamp(15px, 2vmax, 65px);
   padding: clamp(15px, 2vmax, 65px);
 }
