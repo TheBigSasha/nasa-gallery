@@ -1,4 +1,25 @@
-# Like Gatsby's default boilerplate except:
+# A demo site for my latest web techs
+
+## Likes & Account Tracking
+
+### User account authentication
+Users are individually authenticated with NASA API keys. This allows them to like posts and see who else liked them
+
+### HTTPS APIs
+The Spring boot server is hosted locally on a dedicated servers using certbot and NGINX for HTTPS.
+
+## Mind blowing speed
+
+### Server Side Rendering
+Thanks to Gatsby's super fast static code output, as much of this site as possible is rendered server side. Only the content from the NASA API is loaded in client side. 
+
+### Lazy Loading
+All images and content are lazy loaded, enabling lightning fast load times. Everything which can be async is async.
+
+## Animations
+The site is animated using Framer Motion, with some animations disabled on small screen devices.
+
+## Sashaphoto Gatsby Template
 
 ### 🔐 Fully TypeScript
 All the components which can be written in TypeScript are written in TypeScript!
@@ -19,18 +40,3 @@ Just specify your GTAG ID in GitHub secrets under `GATRACKINGID` and optionally 
 #### No analytics in development
 Analytics are tracked only in production builds with the IDs passed by GitHub actions or in `.env.production`
 
-# Usage
-## Setup Your Repo Name
-Change out `sashaphoto-gatsby-template` for the name of your repository, or to be blank if you are using a custom domain.
-
-## Setup secrets
-Go to settings -> secrets in your repository and set:
-
-- `ACCESS_TOKEN` to an [access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) with repo access
--  `GATRACKINGID` to the [GTAG ID](https://developers.google.com/analytics/devguides/collection/gtagjs) for your Google Analytics tracking
-
-For more analytics tracking, you can also set `DCFLOODIGHTID` and `AWCONVERSIONID`
-
-
-# Read the Full Docs
-Browse to the [deployed verison](https://sashaphoto.github.io/sashaphoto-gatsby-template/) of this site to see the template in action and read about how to use it!
