@@ -73,17 +73,11 @@ const Seo: React.FC<SEOProps> = ({ description, lang, meta, title }) => {
         {
           name: `twitter:description`,
           content: metaDescription
-        },
-        {
-          name: `http-equiv`,
-          content: `Content-Security-Policy`
-        },
-        {
-          name: `content`,
-          content: `upgrade-insecure-requests`
         }
       ].concat(meta)}
-    />
+    >
+      <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    </Helmet>
   )
 }
 
