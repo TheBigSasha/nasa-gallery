@@ -48,20 +48,24 @@ const APIKeySetter: React.FC<APIKeySetterProps> = ({ apiKey, setApiKey, exit }) 
              onChange={(event) => {
                setProposedName(event.target.value)
              }} />
-      <button onClick={() => {
-        setApiKey(proposedKey)
-        uploadApiKeyAndName(proposedKey, proposedName)
-        exit()
-      }}>Submit
-      </button>
-      <button className={"bad"} onClick={() => {
-        setApiKey(demoAccount)
-        exit()
+      <div className={"leftRight"}>
+        <div>
+          <button onClick={() => {
+            setApiKey(proposedKey)
+            uploadApiKeyAndName(proposedKey, proposedName)
+            exit()
+          }}>Submit
+          </button>
+          <button className={"bad"} style={{ marginLeft: "10px" }} onClick={() => {
+            setApiKey(demoAccount)
+            exit()
 
-      }}>Don't Login
-      </button>
+          }}>Don't Login
+          </button>
+        </div>
 
-      <button onClick={exit} disabled={apiKey === ""}>Cancel</button>
+        <button onClick={exit} disabled={apiKey === ""}>Cancel</button>
+      </div>
     </div>
   </div>)
 }
