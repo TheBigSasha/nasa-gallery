@@ -7,7 +7,7 @@
 
 import * as React from "react"
 import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 
 interface SEOProps {
   description?: string;
@@ -64,16 +64,24 @@ const Seo: React.FC<SEOProps> = ({ description, lang, meta, title }) => {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
+          content: site.siteMetadata?.author || ``
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: title
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: metaDescription
         },
+        {
+          name: `http-equiv`,
+          content: `Content-Security-Policy`
+        },
+        {
+          name: `content`,
+          content: `upgrade-insecure-requests`
+        }
       ].concat(meta)}
     />
   )
