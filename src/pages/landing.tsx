@@ -9,19 +9,19 @@ const LandingPage: React.FC = () => (
     <h1>NASA Gallery</h1>
     <p>One link, for all things NASA Gallery.</p>
     <div className={"horizontal"}>
-      <div className={"card"}>
+      <div className={"card"} style={{ margin: "25px" }}>
         <a href={"https://github.com/TheBigSasha/nasa-gallery"}>
           <h1 className={"magic"}>Source Code</h1>
         </a>
         <p>Written with React, Spring Boot, & Gatsby</p>
       </div>
-      <div className={"card"}>
+      <div className={"card"} style={{ margin: "25px" }}>
         <a href={"https://thebigsasha.github.io/nasa-gallery/"}>
           <h1 className={"magic"}>Deployed Site</h1>
         </a>
         <p>Hosted on GitHub Pages</p>
       </div>
-      <div className={"card"}>
+      <div className={"card"} style={{ margin: "25px" }}>
         <a href={"https://github.com/TheBigSasha/nasa-gallery#readme"}>
           <h1 className={"magic"}>Documentation</h1>
         </a>
