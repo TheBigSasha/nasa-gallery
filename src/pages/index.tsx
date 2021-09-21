@@ -25,8 +25,7 @@ const IndexPage: React.FC = () => {
   dateStart.setDate(dateStart.getDate() - pageSize)
   return (
     <Layout extraContent={apiKey !== undefined && (<button onClick={() => {
-      setApiKey(undefined)
-      APIStore.setState({ APIKey: undefined })
+      setShowPopup(true)
     }}>Logout</button>)}>
       <Seo title="Gallery" />
       {(apiKey === undefined || showPopup) && <APIKeySetter setApiKey={(key) => {
@@ -35,24 +34,27 @@ const IndexPage: React.FC = () => {
       }} apiKey={apiKey || ""} exit={() => {
         setShowPopup(false)
       }} />}
-
-      <GalleryBrowser dateEnd={lastDate} dateStart={dateStart} apiKey={apiKey || ""}>
-      </GalleryBrowser>
-      <div className={"leftRight"}>
-        <div>{offset >= 1 && (<button onClick={() => {
-            setOffset(offset - 1)
-          }}>Previous Page</button>
-        )}
-        </div>
-        <div>
-          <button onClick={() => {
-            setOffset(offset + 1)
-            document.body.scrollTop = document.documentElement.scrollTop = 0
-          }}>Next Page
-          </button>
-        </div>
-      </div>
-      <div style={{ marginBottom: "150px" }} />
+      {apiKey !== undefined && (
+        <>
+          <GalleryBrowser dateEnd={lastDate} dateStart={dateStart} apiKey={apiKey || ""}>
+          </GalleryBrowser>
+          <div className={"leftRight"}>
+            <div>{offset >= 1 && (<button onClick={() => {
+                setOffset(offset - 1)
+              }}>Previous Page</button>
+            )}
+            </div>
+            <div>
+              <button onClick={() => {
+                setOffset(offset + 1)
+                document.body.scrollTop = document.documentElement.scrollTop = 0
+              }}>Next Page
+              </button>
+            </div>
+          </div>
+          <div style={{ marginBottom: "150px" }} />
+        </>
+      )}
     </Layout>
   )
 }

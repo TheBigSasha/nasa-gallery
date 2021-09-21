@@ -43,10 +43,11 @@ const APIKeySetter: React.FC<APIKeySetterProps> = ({ apiKey, setApiKey, exit }) 
         setProposedKey(event.target.value)
       }} />
       <p>You can get a key at <a href={"https://api.nasa.gov"}>api.nasa.gov</a></p>
-      <p>You can also set a name if you'd like. Otherwise, it will be randomized.</p>
-      <input type={"text"} value={proposedName} onChange={(event) => {
-        setProposedName(event.target.value)
-      }} />
+      <p style={{ marginBottom: "5px" }}>You can also set a name if you'd like. Otherwise, it will be randomized.</p>
+      <input type={"text"} style={{ display: "block", marginTop: 0, marginBottom: "25px" }} value={proposedName}
+             onChange={(event) => {
+               setProposedName(event.target.value)
+             }} />
       <button onClick={() => {
         setApiKey(proposedKey)
         uploadApiKeyAndName(proposedKey, proposedName)
