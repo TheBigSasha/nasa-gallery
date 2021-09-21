@@ -64,7 +64,7 @@ const LikeHandler: React.FC<LikeHandlerProps> = ({ apiKey, imageID }) => {
       <h2 style={{ display: "inline", margin: 0 }} className={"Magic"}
           onClick={() => setShowPopup(!showPopup)}>{likes}</h2>
       {(showPopup && likers !== undefined) && (
-        <div className={"fullscreen"} style={{ bottom: 0, top: 0, height: "100vh" }}>
+        <div className={"fullscreen"} style={{ top: 0, height: "100vh" }}>
           <div className={"card"}>
             <h1>Likes for {imageID}</h1>
             <ul>
