@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import axios from "axios"
-import { serverURL } from "../utility/APIContext"
+import { demoAccount, serverURL } from "../utility/APIContext"
 
 
 interface APIKeySetterProps {
@@ -54,6 +54,13 @@ const APIKeySetter: React.FC<APIKeySetterProps> = ({ apiKey, setApiKey, exit }) 
         exit()
       }}>Submit
       </button>
+      <button className={"bad"} onClick={() => {
+        setApiKey(demoAccount)
+        exit()
+
+      }}>Don't Login
+      </button>
+
       <button onClick={exit} disabled={apiKey === ""}>Cancel</button>
     </div>
   </div>)

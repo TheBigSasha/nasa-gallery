@@ -151,3 +151,8 @@ input {
 .likerName {
   border-radius: $border-radius;
 }
+
+
+.bad {
+  background-color: base($complement-palette);
+}
