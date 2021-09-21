@@ -6,7 +6,7 @@
 Users are individually authenticated with NASA API keys. This allows them to like posts and see who else liked them
 
 ### HTTPS APIs
-The Spring boot server is hosted locally on a dedicated servers using certbot and NGINX for HTTPS.
+The Spring boot server is hosted locally on a dedicated servers using certbot and NGINX for HTTPS. (Browse the API on PostMan)[https://www.getpostman.com/collections/1703c1056154b3a622f4]
 
 ## Mind blowing speed
 
