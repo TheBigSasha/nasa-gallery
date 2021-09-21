@@ -1,6 +1,6 @@
 # A demo site for my latest web techs
 ![Site pic](https://github.com/TheBigSasha/nasa-gallery/blob/5735c7ebfe70af178f56c0c046c956d5e4979bb3/Site-Screenshots.png)
-## ❤️ Likes & Account Tracking
+## Likes & Account Tracking
 
 ### 🙋‍♀️ User account authentication
 Users are individually authenticated with NASA API keys. This allows them to like posts and see who else liked them
@@ -10,7 +10,7 @@ Users are individually authenticated with NASA API keys. This allows them to lik
 The Spring boot server is hosted locally on a dedicated servers using certbot and NGINX for
 HTTPS. [Browse the API on PostMan](https://www.getpostman.com/collections/1703c1056154b3a622f4)
 
-## 💨 Mind blowing speed
+## Mind blowing speed
 
 ### 🖥 Server Side Rendering
 
@@ -32,7 +32,7 @@ screen is big enough.
 
 The site is animated using Framer Motion, with some animations disabled on small screen devices.
 
-## 👍 Sashaphoto Gatsby Template
+## Sashaphoto Gatsby Template
 
 ### 🔐 Fully TypeScript
 
