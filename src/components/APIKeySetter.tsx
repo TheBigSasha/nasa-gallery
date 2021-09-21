@@ -17,7 +17,7 @@ function uploadApiKeyAndName(apiKey: string, name: string) {
 
   axios({
     method: "post",
-    url: serverURL,
+    url: `${serverURL}/users/`,
     headers: {
       "Content-Type": "application/json"
     },
