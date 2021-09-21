@@ -4,7 +4,7 @@ import ImageView from "./imageview"
 import { SolarSystemLoading } from "react-loadingg"
 import { motion } from "framer-motion"
 import TrackVisibility from "react-on-screen"
-import LikeHandler from './LikeHandler';
+import LikeHandler from "./LikeHandler"
 
 interface ImageOfTheDayProps {
   date: Date;
@@ -40,7 +40,7 @@ const ImageOfTheDay: React.FC<ImageOfTheDayProps> = ({ date,apiKey }) => {
         <ImageView title={imageResponse.title} imageURL={imageResponse.url} imageURLHD={imageResponse.hdurl}
                    explanation={imageResponse.explanation} date={imageResponse.date} expand={true}
                    contentType={imageResponse.media_type}>
-          <LikeHandler apiKey={apiKey || ''} imageID={imageResponse.id}/>
+          <LikeHandler apiKey={apiKey || ""} imageID={imageResponse.date} />
         </ImageView>
       </TrackVisibility>)
   } else {

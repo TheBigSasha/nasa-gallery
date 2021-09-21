@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { SolarSystemLoading } from 'react-loadingg';
-import loadable from "@loadable/component";
+import React from "react"
+import { SolarSystemLoading } from "react-loadingg"
+import loadable from "@loadable/component"
 
-interface ImageOfTheDayProps{
+interface ImageOfTheDayProps {
     dateStart: Date;
     dateEnd: Date;
     apiKey: string;
 }
 
-const ImageOfTheDay = loadable(() => import('./ImageOfTheDay'));
+const ImageOfTheDay = loadable(() => import("./ImageOfTheDay"))
 
-const GalleryBrowser: React.FC<ImageOfTheDayProps> = ({dateStart, dateEnd,apiKey}) => {
+const GalleryBrowser: React.FC<ImageOfTheDayProps> = ({ dateStart, dateEnd, apiKey }) => {
     const dates: Date[] = [];
     let currentDate = dateEnd;
     while(currentDate >= dateStart){
@@ -20,7 +20,7 @@ const GalleryBrowser: React.FC<ImageOfTheDayProps> = ({dateStart, dateEnd,apiKey
     }
     return (<div>
         {dates.map((date) => (
-            <ImageOfTheDay date={date} apiKey={apiKey} fallback={<SolarSystemLoading />} />
+          <ImageOfTheDay key={date.toISOString()} date={date} apiKey={apiKey} fallback={<SolarSystemLoading />} />
         ))}
     </div>)
 }

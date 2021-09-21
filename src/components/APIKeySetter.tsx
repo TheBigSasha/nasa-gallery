@@ -1,26 +1,59 @@
-import React, { useState } from "react";
-import ImageView from "./imageview";
-import { SolarSystemLoading } from 'react-loadingg';
-import { motion } from "framer-motion";
-import loadable from "@loadable/component";
+import React, { useState } from "react"
+import axios from "axios"
+import { serverURL } from "../utility/APIContext"
 
 
-interface APIKeySetterProps{
+interface APIKeySetterProps {
   apiKey: string;
   setApiKey: (apiKey: string) => void;
   exit: () => void;
 }
 
-const APIKeySetter: React.FC<APIKeySetterProps> = ({apiKey, setApiKey, exit}) => {
-  const [proposedKey, setProposedKey] = useState<string>(apiKey);
-  return (<div className={'fullscreen'}>
-    <div className={'card'}>
-    <h1>Enter an API Key</h1>
-    <p>In order to provide identity for likes, and to hide API keys, this site asks you use your own NASA API key.</p>
-    <input type={'password'} value={proposedKey} onChange={(event) => {setProposedKey(event.target.value)}}/>
-    <p>You can get a key at <a href={'https://api.nasa.gov'}>api.nasa.gov</a> </p>
-    <button onClick={() => {setApiKey(proposedKey); exit();}}>Submit</button>
-    <button onClick={exit} disabled={apiKey === ''}>Cancel</button>
+function uploadApiKeyAndName(apiKey: string, name: string) {
+  var data = JSON.stringify({
+    "APIKey": apiKey,
+    "name": name
+  })
+
+  axios({
+    method: "post",
+    url: serverURL,
+    headers: {
+      "Content-Type": "application/json"
+    },
+    data: data
+  })
+    .then(function(response) {
+      console.log(JSON.stringify(response.data))
+    })
+    .catch(function(error) {
+      console.log(error)
+    })
+
+}
+
+const APIKeySetter: React.FC<APIKeySetterProps> = ({ apiKey, setApiKey, exit }) => {
+  const [proposedKey, setProposedKey] = useState<string>(apiKey)
+  const [proposedName, setProposedName] = useState<string>("")
+  return (<div className={"fullscreen"}>
+    <div className={"card"}>
+      <h1>Login with API Key</h1>
+      <p>In order to provide identity for likes, and to hide API keys, this site asks you use your own NASA API key.</p>
+      <input type={"password"} value={proposedKey} onChange={(event) => {
+        setProposedKey(event.target.value)
+      }} />
+      <p>You can get a key at <a href={"https://api.nasa.gov"}>api.nasa.gov</a></p>
+      <p>You can also set a name if you'd like. Otherwise, it will be randomized.</p>
+      <input type={"text"} value={proposedName} onChange={(event) => {
+        setProposedName(event.target.value)
+      }} />
+      <button onClick={() => {
+        setApiKey(proposedKey)
+        uploadApiKeyAndName(proposedKey, proposedName)
+        exit()
+      }}>Submit
+      </button>
+      <button onClick={exit} disabled={apiKey === ""}>Cancel</button>
     </div>
   </div>)
 }

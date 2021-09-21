@@ -93,6 +93,7 @@ footer {
   color: base($accent-palette);
   font-size: clamp(15px, 2vmax, 65px);
   padding: clamp(15px, 2vmax, 65px);
+  border-radius: $border-radius;
 }
 
 .center{
@@ -126,12 +127,27 @@ footer {
   align-content: center;
 }
 
-.card{
+.card {
   padding: 15px;
   background-color: var(--background);
   margin: auto;
+  border-radius: $border-radius;
+}
+
+button {
+  border: none;
+  background-color: base($accent-palette);
 }
 
 input {
   width: 80%;
+}
+
+.centerChildren {
+  display: flex;
+  align-items: center;
+}
+
+.likerName {
+  border-radius: $border-radius;
 }

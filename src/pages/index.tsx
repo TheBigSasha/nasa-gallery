@@ -1,35 +1,60 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { useState } from "react"
 
 
 import Layout from "../components/layout"
 import Seo from "../utility/seo"
-import DatePicker from 'react-date-picker';
-import { SolarSystemLoading } from 'react-loadingg';
-import { useState } from "react"
-import { motion } from "framer-motion"
-import loadable from '@loadable/component'
+import loadable from "@loadable/component"
+import { useStore } from "react-stores"
+import { APIStore } from "../utility/APIStore"
+import APIKeySetter from "../components/APIKeySetter"
 
 
-const ImageOfTheDay = loadable(() => import('../components/ImageOfTheDay'));
+const GalleryBrowser = loadable(() => import("../components/GalleryBrowser"))
+
+const pageSize = 20
 
 const IndexPage: React.FC = () => {
-  const [date, setDate] = useState(new Date());
-  return(
-  <Layout>
-    <Seo title="Home" />
-    <motion.button whileHover={{scale: 1.1}} whileTap={{scale: 0.7}} className='leftStatic navButton'
-    onClick={() => {date.setDate(date.getDate() - 1); setDate(new Date(date))}}>
-      {'<'}
-    </motion.button>
-    {date < new Date() && (    <motion.button whileHover={{scale: 1.1}} whileTap={{scale: 0.7}} className='rightStatic navButton'
-    onClick={() => {date.setDate(date.getDate() + 1); setDate(new Date(date))}}>
-      {'>'}
-    </motion.button>
-    )}
-    <ImageOfTheDay date={date} fallback={<div>Loading...<SolarSystemLoading/></div>} />
-  </Layout>
-  );
+  const [offset, setOffset] = useState<number>(0)
+  const currentDate = new Date()
+  const lastDate = new Date(currentDate)
+  lastDate.setDate(lastDate.getDate() - (offset * pageSize))
+  const dateStart = new Date(lastDate)
+  const [apiKey, setApiKey] = useState<string | undefined>(process.env.NASA_API_KEY || useStore(APIStore).APIKey || undefined) //Switch to context
+  const [showPopup, setShowPopup] = useState<boolean>(apiKey === undefined || apiKey === "" || apiKey === "undefined")
+  dateStart.setDate(dateStart.getDate() - pageSize)
+  return (
+    <Layout extraContent={apiKey !== undefined && (<button onClick={() => {
+      setApiKey(undefined)
+      APIStore.setState({ APIKey: undefined })
+    }}>Logout</button>)}>
+      <Seo title="Gallery" />
+      {(apiKey === undefined || showPopup) && <APIKeySetter setApiKey={(key) => {
+        setApiKey(key)
+        APIStore.setState({ APIKey: key })
+      }} apiKey={apiKey || ""} exit={() => {
+        setShowPopup(false)
+      }} />}
+
+      <GalleryBrowser dateEnd={lastDate} dateStart={dateStart} apiKey={apiKey || ""}>
+      </GalleryBrowser>
+      <div className={"leftRight"}>
+        <div>{offset >= 1 && (<button onClick={() => {
+            setOffset(offset - 1)
+          }}>Previous Page</button>
+        )}
+        </div>
+        <div>
+          <button onClick={() => {
+            setOffset(offset + 1)
+            document.body.scrollTop = document.documentElement.scrollTop = 0
+          }}>Next Page
+          </button>
+        </div>
+      </div>
+      <div style={{ marginBottom: "150px" }} />
+    </Layout>
+  )
 }
 
 export default IndexPage
