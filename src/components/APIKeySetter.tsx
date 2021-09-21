@@ -38,7 +38,8 @@ const APIKeySetter: React.FC<APIKeySetterProps> = ({ apiKey, setApiKey, exit }) 
   return (<div className={"fullscreen"}>
     <div className={"card"}>
       <h1>Login with API Key</h1>
-      <p>In order to provide identity for likes, and to hide API keys, this site asks you use your own NASA API key.</p>
+      <p>In order to provide identity for likes, this site asks you use your own NASA API key. You may proceed using the
+        default key, but you won't be able to like posts.</p>
       <input type={"password"} value={proposedKey} onChange={(event) => {
         setProposedKey(event.target.value)
       }} />
