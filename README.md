@@ -1,5 +1,5 @@
 # A demo site for my latest web techs
-
+![Site pic](https://github.com/TheBigSasha/nasa-gallery/blob/5735c7ebfe70af178f56c0c046c956d5e4979bb3/Site-Screenshots.png)
 ## Likes & Account Tracking
 
 ### User account authentication
