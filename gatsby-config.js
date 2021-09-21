@@ -3,12 +3,12 @@ require("dotenv").config({
 })
 
 module.exports = {
-  pathPrefix: "/shopify-technical-challenge",
+  pathPrefix: "/nasa-gallery",
   siteMetadata: {
     title: `NASA Image Gallery`,
     description: `Into space we go 🚀 and I bet this site will get you there faster ;)`,
     author: `Alexander Aleshchenko`,
-    siteUrl: `https://sasharesume.com/`,
+    siteUrl: `https://sasharesume.com/`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
