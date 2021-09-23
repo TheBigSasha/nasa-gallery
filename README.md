@@ -19,7 +19,7 @@ content from the NASA API is loaded in client side.
 
 ### 💤 Lazy Loading
 
-All images and content are lazy loaded, enabling lightning fast load times. Everything which can be async is async.
+All images and content are lazy loaded, enabling lightning fast load times. Also, images are loaded in sequence, first a low res blurry image, then a high res image when time allows. Everything which can be async is async.
 
 ## 🎞 Animations
 
