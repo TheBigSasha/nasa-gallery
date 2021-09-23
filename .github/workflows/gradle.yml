@@ -22,9 +22,7 @@ jobs:
         java-version: '16'
         distribution: 'adopt'
         cache: gradle
-    - name: Navigate to Server Project
-      run: cd ./NASAGalleryServer/
     - name: Grant execute permission for gradlew
-      run:  chmod +x gradlew
+      run:  chmod +x ./NASAGalleryServer/gradlew
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./NASAGalleryServer/gradlew build
