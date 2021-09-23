@@ -23,6 +23,6 @@ jobs:
         distribution: 'adopt'
         cache: gradle
     - name: Grant execute permission for gradlew
-      run:  chmod +x ./NASAGalleryServer/gradlew
+      run:  cd ./NASAGalleryServer/; chmod +x gradlew
     - name: Build with Gradle
-      run: ./NASAGalleryServer/gradlew build
+      run:  cd ./NASAGalleryServer/; ./gradlew build
